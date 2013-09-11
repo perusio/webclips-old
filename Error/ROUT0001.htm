@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!---
+   WebCLIPS Error Page for ROUT0001
+
+   The purpose of this document is to more fully explain the error ROUT0001 in WebCLIPS
+
+   Dec.   10, 1997    Create
+--->
+<html>
+<head>
+<META NAME="Author" Content="Michael Giordano">
+<META NAME="Generator" Content="Home Site 1.2">
+<META http-equiv="keywords" Content="WebCLIPS, CLIPS, Web, AI, Programming, Internet">
+</head>
+<title>WebCLIPS Error Explanation</title>
+<body bgcolor=#FFFFFO text="#000000" link="#008000" vlink="#FF0000">
+<center><b>WebCLIPS</b> -- Error Reporting Facility<hr></center>
+The error number is : ROUT0001<br>
+The error message is : Could not <em>generate a temporary filename</em> for this <strong>Router</strong>
+<p><br><b><font color=red>Explanation</font></b> :<p>
+In order redirect routed output to the screen, <strong>WebCLIPS</strong> uses <code>_tempnam()</code> to generate temporary filenames.
+In this case, this function failed.
+<p><br><b><font color=green>Resolution</font></b> :<p>
+The most likely cause of the problem is that the web server does not have proper authority to create files to the Windows Temp Directory. If this is the case, contact your security administrator to resolve the problem.
+</body>
+</html>

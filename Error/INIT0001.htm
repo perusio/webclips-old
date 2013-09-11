@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!---
+   WebCLIPS Error Page for INIT0001
+
+   The purpose of this document is to more fully explain the error INIT0001 in WebCLIPS
+
+   Aug.   14, 1997    Create
+--->
+<html>
+<head>
+<META NAME="Author" Content="Michael Giordano">
+<META NAME="Generator" Content="Home Site 1.2">
+<META http-equiv="keywords" Content="WebCLIPS, CLIPS, Web, AI, Programming, Internet">
+</head>
+<title>WebCLIPS Error Explanation</title>
+<body bgcolor=#FFFFFO text="#000000" link="#008000" vlink="#FF0000">
+<center><b>WebCLIPS</b> -- Error Reporting Facility<hr></center>
+The error number is : INIT0001<br>
+The error message is : <strong>CLIPS</strong> failed during <em>initialization</em>
+<p><br><b><font color=red>Explanation</font></b> :<p>
+This error usually appears for one of two reasons :
+<ol>
+	<li>Insufficient Memory
+	<li><Strong>WebCLIPS</strong> is unable to find CLIPS.DLL
+</ol>
+<p><br><b><font color=green>Resolution</font></b> :<p>
+If there is insufficient memory, then some applications must be unloaded on the <strong>web server</strong>.<p>
+In order for the web server to find CLIPS.DLL, it must reside in one of three places :
+<ol>
+	<li>The web servers /CGI-BIN/ (or equivalent) directory
+	<li>The WINDOWS\SYSTEM directory
+	<li>In a directory specified by the PATH environment variable
+</ol>
+A copy of CLIPS.DLL is available <a href="http://ourworld.compuserve.com/homepages/marktoml/clips32.zip">here.</a>
+</body>
+</html>

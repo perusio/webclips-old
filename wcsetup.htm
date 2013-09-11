@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!---
+   WebCLIPS Setup Page
+
+   The purpose of this document is to help clients setup WebCLIPS
+
+   Aug.  21, 1997    Mike Giordano   Create
+--->
+<html>
+<title>WebCLIPS Setup Program</title>
+<head>
+<META NAME="Author" Content="Michael Giordano">
+<META NAME="Generator" Content="Home Site 1.2">
+<META http-equiv="keywords" Content="WebCLIPS, CLIPS, Web, AI, Programming, Internet">
+</head>
+<body bgcolor=#FFFFF0 text="#000000">
+<h3 align=center>WebCLIPS Setup Page</h3><hr>
+These are the steps necessary to install WebCLIPS onto a Windows NT/95 computer :
+<ol>
+<li>Put the program <code>inisetup.exe</code> into your web server's <code>/cgi-bin/</code> (or whatever) directory.
+<li>If the directory is not /cgi-bin/, update this document to point the proper directory.
+<li>Run this program and make note of it's results. <FORM ACTION=/cgi-bin/inisetup.exe>
+<INPUT TYPE="submit" Value="Show me the directory!">
+</FORM>
+<li>Put <code>WebCLIPS.EXE</code> and <code>wcbsave.exe</code> into your <code>/cgi-bin/</code> (or whatever) directory.
+<li>Review the document <a href=wcbsavsu.htm>wcbsave.htm</a> for notes on how to use the <strong>WebCLIPS</strong> BSave utility.
+<li>Review the notes below on the contents of your <code>WebCLIPS.INI</code> file.
+</ol>
+<p>Below is a listing of a sample <code>WebCLIPS.INI</code>. For more detail please see <a href="wchowto.htm">wchowto.htm</a><p>
+[System]<br>
+<table cellpadding=3 border=3>
+<tr><td>CLIPSOutput=c:\website\cgi-bin</td><td>A suggested directory to keep temporary files</td></tr>
+<tr><td>MaxPostInputSize=8192</td><td>Simply a precautionary value can be changed if desired</td></tr>
+<tr><td>HelperFileName=c:\clips\examples\wchtml.clp</td><td rowspan=2>You may want to update the directories on these two files</td></tr>
+<tr><td>Deftemplates=c:\clips\examples\wctmpl.clp</td>
+<tr><td>ErrorPath=/WebProg/Error/</td><td rowspan=2>These should be changed with your web administrator's help
+<tr><td>HomeURL=/WebProg/webclips.htm</td></tr>
+<tr><td>AgendaLimit=500</td><td>This <strong>optional</strong> parameter defines the <strong>DEFAULT</strong> number of rules that will fire on the Agenda for the site. This can be overridden on a screen-by-screen basis.
+</table>
+<p>[BaseBall Demo] <br>
+<table border=3 cellpadding=3>
+<tr><td>binimage=c:\website\cgi-bin\baseball.bin</td><td rowspan=15>Please update these entries to reflect any directory/filename changes in your environment</td></tr>
+<tr><td>InitialScreen=c:\HTMLDocs\hwbb.htm</td></tr>
+<tr><td>factgroup1=c:\website\cgi-bin\bbfacts.clp</td></tr>
+<tr><td>PreserveFacts=yes</td></tr>
+<tr><td> </td></tr>
+<tr><td>[Monkey and Bananas Demo]</td></tr>
+<tr><td>script1=c:\clips\examples\mab.clp</td></tr>
+<tr><td>InitialScreen=c:\HTMLDocs\mab.htm</td></tr>
+<tr><td>PreserveFacts=Yes</td></tr>
+<tr><td> </td></tr>
+<tr><td>[Fox, Goat and Cabbage Demo]</td></tr>
+<tr><td>script1=c:\website\cgi-bin\dilemma1.clp</td></tr>
+<tr><td>InitialScreen=c:\HTMLDocs\dilemma1.htm</td></tr>
+<tr><td>PreserveFacts=YES</td></tr>
+<tr><td> </td></tr>
+</table>
+<p>
+[JFK Family Tree]<br>
+<table border=3 cellpadding=3>
+<tr><td>script1=c:\website\cgi-bin\webrel.clp</td><td>Update this entry if needed</td></tr>
+<tr><td>LoadHelper=Yes</td><td>This parameter is required for this screen</td></tr>
+</table>
+<p>The next five lines are ODBC queries required to show part of John F. Kennedy's Family Tree. You <b>MUST</b> register the file <code>clipodbc.mdb</code> as an ODBC data source. Information on how to register an ODBC data source can be found <a href="http://www.microsoft.com/visualc/v42/defining.htm">here</a>. The queries below assume that you use the name <u>CLIPSODBC</u> as the name for the data source. If you register your data source under a different name, please make the appropriate update to the <code>connect</code> parameter.
+<pre>
+ODBCQuery1=(ODBCQuery (query select * from FATHEROF) (deftemplatename father-of) (connect DSN=CLIPSODBC;) (implodedata Y))
+ODBCQuery2=(ODBCQuery (query select * from MOTHEROF) (deftemplatename mother-of) (connect DSN=CLIPSODBC;) (implodedata Y))
+ODBCQuery3=(ODBCQuery (query select * from WIFEOF) (deftemplatename wife-of) (connect DSN=CLIPSODBC;) (implodedata Y))
+ODBCQuery4=(ODBCQuery (query select * from MALE) (deftemplatename male) (connect DSN=CLIPSODBC;) (implodedata Y))
+ODBCQuery5=(ODBCQuery (query select * from FEMALE) (deftemplatename female) (connect DSN=CLIPSODBC;) (implodedata Y))
+</pre>
+<table border=3 cellpadding=3>
+<tr><td>Fact1=(Print-Phase (phase Header))</td><td>This parameter is required for this screen</td></tr>
+</table>
+<p>This is the section that contains <strong>WebCLIPS</strong> error messages. It is recommended that the error messages are left alone.<pre>
+[Error Messages]
+INIT0001=<strong>CLIPS</strong> failed during <em>initialization</em>
+WBIO0001=Invalid request method
+WBIO0002=No <b>Input Screen</b> Specified from method:GET
+WBIO0003=No <b>Input Screen</b> Specified from method:POST
+WBIO0004=Unable to allocate space for <strong>Post data</strong>
+WBIO0005=Unable to find the <strong>Screen Name</strong> in the input data
+IFCT0001=Fact Assertion from <b>web server data</b> <i>failed</i>
+IFCT0002=Fact Assertion from <b>INI File</b> <i>failed</i>
+IFCT0003=Fact Assertion from <b>web server data</b> <i>failed -- split up fact name/value pair</i>
+DFTM0001=<b>CLIPS</b> failed while <em>loading</em> the <b>deftemplate script</b> -- Read Failure.
+DFTM0002=<b>CLIPS</b> failed while <em>loading</em> the <b>deftemplate script</b> -- Bad Load Name.
+DFTM0003=<b>CLIPS</b> failed while <em>loading</em> the <b>deftemplate script</b> -- <b>CLIPS</b> not initialized.
+DFTM0004=<b>CLIPS</b> failed while <em>loading</em> the <b>deftemplate script</b> -- Parse Failure.
+HTML0001=<b>CLIPS</b> failed while <em>loading</em> the <b>HTML helper script</b> -- Read Failure.
+HTML0002=<b>CLIPS</b> failed while <em>loading</em> the <b>HTML helper script</b> -- Bad Load Name.
+HTML0003=<b>CLIPS</b> failed while <em>loading</em> the <b>HTML helper script</b> -- <b>CLIPS</b> not initialized.
+HTML0004=<b>CLIPS</b> failed while <em>loading</em> the <b>HTML helper script</b> -- Parse Failure.
+SCPT0001=<b>WebCLIPS</b> requires either <em>a script or a binary image file</em> to execute.
+SCPT0002=<b>CLIPS</b> failed while <em>loading</em> this script -- Read Failure
+SCPT0003=<b>CLIPS</b> failed while <em>loading</em> this script -- Parse Failure
+SCPT0004=<b>CLIPS</b> failed while <em>loading</em> this script -- Bad Load Name
+SCPT0005=<b>CLIPS</b> failed while <em>loading</em> this script -- <b>CLIPS</b> Not Initialized
+BLOD0001=<b>CLIPS</b> failed while <em>loading</em> this binary image file -- Read Failure
+BLOD0002=<b>CLIPS</b> failed while <em>loading</em> this binary image file -- Bad Load Name
+GFCT0001=<b>CLIPS</b> failed while <em>loading</em> this script -- Read Failure
+GFCT0002=<b>CLIPS</b> failed while <em>loading</em> this script -- Parse Failure
+GFCT0003=<b>CLIPS</b> failed while <em>loading</em> this script -- Bad Load Name
+GFCT0004=<b>CLIPS</b> failed while <em>loading</em> this script -- <b>CLIPS</b> Not Initialized
+OQRY0001=Could not <em>open</em> this <strong>ODBC Query file</strong>
+OQRY0002=Could not <em>allocate memory</em> for this <strong>ODBC Query file</strong>
+OQRY0003=Could not <em>read</em> this <strong>ODBC Query file</strong>
+OQRY0004=Could not find either <em>file</em> or <em>query</em> parameter in this ODBC request
+OQRY0005=Could not find the <em>connect</em> parameter in this ODBC request
+OQRY0006=Could not find the <em>deftemplatename</em> parameter in this ODBC request
+OQRY0007=Could not find the <em>Implode data</em> parameter in this ODBC request
+OQRY0008=The <b>fact assertion</b> for this <em>query</em> failed
+OQRY0009=An <b>ODBC error</b> occurred while executing a query
+OQRY0010=<b>WebCLIPS</b> was unable to open a recordset for this query
+DRBL0001=<b>WebCLIPS</b> failed to <em>generate a unique file name</em> for rerouted output
+DRBL0002=<b>WebCLIPS</b> failed to <em>open the file</em> for rerouted output for <b>CLIPS</b>
+DRBL0003=<b>WebCLIPS</b> failed to <em>close the file</em> for rerouted output for <b>CLIPS</b>
+DRBL0004=Could not <em>open</em> this <strong>Router file</strong>
+DRBL0005=Could not <em>allocate memory</em> for this <strong>Router file</strong>
+DRBL0006=Could not <em>read</em> this <strong>Router file</strong>
+DRBL0007=Could not <em>delete</em> this <strong>Router file</strong>
+ISCN0001=Could not <em>open</em> this <strong>Initial Screen file</strong>
+ISCN0002=Could not <em>allocate memory</em> for this <strong>Initial Screen file</strong>
+ISCN0003=Could not <em>read</em> this <strong>Initial Screen file</strong>
+</pre>
+</body>
+</html>

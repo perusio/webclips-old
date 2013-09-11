@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!---
+   WebCLIPS Error Page for OQRY0002
+
+   The purpose of this document is to more fully explain the error OQRY0002 in WebCLIPS
+
+   Aug.   18, 1997    Create
+--->
+<html>
+<head>
+<META NAME="Author" Content="Michael Giordano">
+<META NAME="Generator" Content="Home Site 1.2">
+<META http-equiv="keywords" Content="WebCLIPS, CLIPS, Web, AI, Programming, Internet">
+</head>
+<title>WebCLIPS Error Explanation</title>
+<body bgcolor=#FFFFFO text="#000000" link="#008000" vlink="#FF0000">
+<center><b>WebCLIPS</b> -- Error Reporting Facility<hr></center>
+The error number is : OQRY0002<br>
+The error message is : Could not <em>allocate memory</em> for this <strong>ODBC Query file</strong>
+<p><br><b><font color=red>Explanation</font></b> :<p>
+<p><br><b><font color=green>Resolution</font></b> :<p>
+A screen specified to <strong>WebCLIPS</strong> that an ODBC query should be run. For this particular case, the query is contained in a file. The web server could not allocate enough memory to read in this file.
+<p><br><b><font color=green>Resolution</font></b> :<p>
+Some application(s) must be unloaded on the <strong>web server</strong>.
+</body>
+</html>

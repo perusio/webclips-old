@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!---   WebCLIPS Demo Page   
+        The purpose of this document is to allow a client to choose a WebClips script to execute.
+
+		Mar.  17, 1997    Mike Giordano   Create   
+		Apr.  23, 1997    Mike Giordano   'email' link added, in case M.Tomlinson wants to put this on the net someplace.   
+		Jul.  16, 1997    Mike Giordano   Remove reference to clpout as this is no longer needed with WebCLIPS.   
+		Jul.  31, 1997    Added links for Features page and setup/download page   
+		Dec.  19, 1997    Added Battleship to demo programs   
+		Jan.  27, 1998    Added link to gdFile demo
+		Dec.   7, 1999    Added form to Restart a previously saved game of Battleship
+--->
+<html>
+
+<head>
+<title>WebCLIPS</title>
+<meta NAME="Author" Content="Michael Giordano">
+<meta NAME="GENERATOR" Content="Microsoft FrontPage 3.0">
+<meta http-equiv="keywords" Content="WebCLIPS, CLIPS, Web, AI, Programming, Internet">
+</head>
+
+<body bgcolor="#FFFFF0" text="#000000">
+
+<p><img SRC="webclips.gif" BORDER="0" align="left" WIDTH="232" HEIGHT="259"> <a
+href="http://www.jsc.nasa.gov/~clips/CLIPS.html">CLIPS</a> (<u>C</u> <u>L</u>anguage <u>I</u>ntegrated
+<u>P</u>roduction <u>S</u>ystem) is an expert systems language that allows you to define
+rules and facts in a script. The script is then executed through an 'inference' engine to
+arrive at a decision(s). For more information, please visit the <a
+href="http://www.jsc.nasa.gov/~clips/CLIPS.html">CLIPS Home Page</a>.</p>
+
+<p><strong>WebCLIPS</strong> is an implementation of CLIPS run as a CGI application under
+Windows NT/95. By utilizing <a
+href="http://ourworld.compuserve.com/homepages/marktoml/clipstuf.htm">the 32 bit Windows
+NT/95 DLL </a>, standard CLIPS functions were made available via <a
+href="http://ourworld.compuserve.com/homepages/marktoml/cppstuff.htm">MFC C++ wrapper
+classes</a>. The <strong>WebCLIPS</strong> scripts are standard to the CLIPS
+specification. The only 'unusual' element is that the results generated from <strong>WebCLIPS</strong>
+screens have some embedded <a
+href="http://www.ncsa.uiuc.edu/General/Internet/WWW/HTMLPrimer.html">HTML</a> tags to
+properly display the output. A fuller explanation of <strong>WebCLIPS</strong> <a
+href="wcfeats.htm">features</a> are available as well as <a href="/WebProg/wcsetup.htm">download
+and setup information</a>. </p>
+
+<p>Please feel free to <a href="mailto:cissmjg@hotmail.com">email me</a> with any
+comments, suggestions or questions. <br>
+<br>
+<br>
+<br>
+</p>
+
+<hr>
+
+<p>Please choose <strong>one</strong> of the following demonstrations :<br>
+<br>
+</p>
+
+<form ACTION="/cgi-bin/WebCLIPS.exe" METHOD="GET">
+  <div align="center"><center><p><br>
+  <select NAME="fact" size="1">
+    <option VALUE="(ScreenName (ScrnName Baseball Demo))">BaseBall Demo </option>
+    <option VALUE="(ScreenName (ScrnName Monkey and Bananas Demo))">Monkey and Bananas Demo </option>
+    <option VALUE="(ScreenName (ScrnName Fox, Goat and Cabbage Demo))">Fox, Goat and Cabbage Demo </option>
+    <option VALUE="(ScreenName (ScrnName Battleship Setup Screen))">Play Battleship </option>
+  </select> <br>
+  <br>
+  <input TYPE="submit"><input TYPE="reset"></p>
+  </center></div>
+</form>
+<p align=center>
+<FORM Action=/WebCLIPS/cgi-bin/WebCLIPS.exe METHOD=Post>
+<INPUT TYPE=HIDDEN Name=fact Value="(ScreenName (ScrnName Play Battleship))">
+<INPUT TYPE=HIDDEN Name=fact Value="(Restart True)">
+<INPUT TYPE=Submit Value="Restart a Previous Battleship Game">
+</FORM>
+</p>
+<p>Other WebCLIPS Utilities : 
+
+<ul>
+  <li><a href="http://www.hpnt.com/WebCLIPS/gdfile.htm">GIF File utility</a> </li>
+  <li><a href="http://www.monmouth.com/~km2580/rchome.htm">RAD CLIPS</a> </li>
+</ul>
+</body>
+</html>

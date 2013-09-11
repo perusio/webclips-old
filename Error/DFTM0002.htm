@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!---
+   WebCLIPS Error Page for DFTM0002
+
+   The purpose of this document is to more fully explain the error DFTM0002 in WebCLIPS
+
+   Aug.   18, 1997    Create
+--->
+<html>
+<head>
+<META NAME="Author" Content="Michael Giordano">
+<META NAME="Generator" Content="Home Site 1.2">
+<META http-equiv="keywords" Content="WebCLIPS, CLIPS, Web, AI, Programming, Internet">
+</head>
+<title>WebCLIPS Error Explanation</title>
+<body bgcolor=#FFFFFO text="#000000" link="#008000" vlink="#FF0000">
+<center><b>WebCLIPS</b> -- Error Reporting Facility<hr></center>
+The error number is : DFTM0002<br>
+The error message is : <b>CLIPS</b> failed while <em>loading</em> the <b>deftemplate script</b> -- Bad Load Name.
+<p><br><b><font color=red>Explanation</font></b> :<p>
+<strong>WebCLIPS</strong> tried to load the <i>deftemplates</i> it needs to perform dynamic screen navigation but failed due to a malformed file name. The location of the <i>deftemplates</i> is dictated by the <u>Deftemplates</u> entry in the [System] section of <code>WebCLIPS.INI</code>.
+<p><br><b><font color=green>Resolution</font></b> :<p>
+Update the file name in <code>WebCLIPS.INI</code> to a proper format.
+</body>
+</html>

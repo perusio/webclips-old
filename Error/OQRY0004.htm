@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!---
+   WebCLIPS Error Page for OQRY0004
+
+   The purpose of this document is to more fully explain the error OQRY0004 in WebCLIPS
+
+   Aug.   18, 1997    Create
+--->
+<html>
+<head>
+<META NAME="Author" Content="Michael Giordano">
+<META NAME="Generator" Content="Home Site 1.2">
+<META http-equiv="keywords" Content="WebCLIPS, CLIPS, Web, AI, Programming, Internet">
+</head>
+<title>WebCLIPS Error Explanation</title>
+<body bgcolor=#FFFFFO text="#000000" link="#008000" vlink="#FF0000">
+<center><b>WebCLIPS</b> -- Error Reporting Facility<hr></center>
+The error number is : OQRY0004<br>
+The error message is : Could not find either <em>file</em> or <em>query</em> parameter in this ODBC request
+<p><br><b><font color=red>Explanation</font></b> :<p>
+A screen specified to <strong>WebCLIPS</strong> that an ODBC query should be run. For this particular case, the screen specified neither a QUERY or a FILE containing a query to <strong>WebCLIPS</strong>.
+<p><br><b><font color=green>Resolution</font></b> :<p>
+If you are specifying an ODBC query with the SQL embedded in the <em>deftemplate</em>, then you must place your SQL in the '<b>query</b>' slot. For example,<pre>
+(odbcquery (query SELECT * FROM tablename)<br>           (connect ODBC-Connect-Info;)<br>           (deftemplatename table-name)<br>           (implodedata Y))
+</pre>
+If you are specifying an ODBC query with the SQL contained in a separate file, then you must place the file name in the '<b>file</b>' slot. For example,<pre>
+(odbcqueryfile (file c:\websrvr\sql\query1.txt)<br>               (connect ODBC-Connect-Info;)<br>               (deftemplatename table-name)<br>               (implodedata N))
+</body>
+</html>
